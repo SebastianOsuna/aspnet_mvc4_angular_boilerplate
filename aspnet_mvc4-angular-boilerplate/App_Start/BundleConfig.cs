@@ -7,6 +7,9 @@ namespace aspnet_mvc4_angular_boilerplate
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // You can also use .IncludeDirectory(<directory>, <filename/pattern>, <recursive:true|false>)
+            // Filename pattern can use '*' as a wildcard ONLY as prefix or sufix, that is *.js or app*
+
             // ------------------------------
             // CSS Bundles
             // ------------------------------

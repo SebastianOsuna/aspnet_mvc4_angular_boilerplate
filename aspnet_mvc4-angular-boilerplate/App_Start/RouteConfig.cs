@@ -19,6 +19,12 @@ namespace aspnet_mvc4_angular_boilerplate
                 defaults: new { controller = "StaticPages", action = "Index" }
             );
 
+            routes.MapRoute(
+                name: "root_wildcard",
+                url: "{anything}",
+                defaults: new { controller = "StaticPages", action = "Index" }
+            );
+
         }
     }
 }
