@@ -10,7 +10,26 @@
 </head>
 <body>
     <div id="body">
-        Body
+        <!-- Authentication example. -->
+
+        <div ng-app="exampleApp" ng-controller="SessionsController as sessionsCtrl">
+            <div>
+                <label for="username" translate="user.username"></label>
+                <input type="text" name="username" id="username" ng-model="user.username" />
+            </div>
+            <div>
+                <label for="password" translate="user.password"></label>
+                <input type="password" name="password" id="password" ng-model="user.password" />
+            </div>
+            <div>
+                <button type="button" translate="submit"></button>
+            </div>
+            <div ng-controller="LanguageController as langCtrl">
+                <em ng-show="langCtrl.current != 'es'" ng-click="langCtrl.changeLanguage('es')">ES</em><em ng-show="langCtrl.current != 'en'" ng-click="langCtrl.changeLanguage('en')">EN</em>
+            </div>
+        </div>
+        
+        <!-- /Authentication example. -->
     </div>
 
     <footer>
