@@ -14,9 +14,9 @@ namespace aspnet_mvc4_angular_boilerplate
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                name: "root",
+                url: "",
+                defaults: new { controller = "StaticPages", action = "Index" }
             );
 
         }

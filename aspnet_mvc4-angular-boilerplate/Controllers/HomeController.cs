@@ -10,7 +10,7 @@ namespace aspnet_mvc4_angular_boilerplate.Controllers
     {
         public ActionResult Index(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            //ViewBag.ReturnUrl = returnUrl;
             return View();
         }
     }
