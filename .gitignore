@@ -1,0 +1,15 @@
+﻿*suo
+*.tmp
+*.TMP
+[bB]in
+[oO]bj
+*.user
+packages/
+[Bb]in
+[Oo]bj
+Logs/
+Thumbs.db
+*.user
+*.suo
+[Dd]ebug
+[Rr]elease
