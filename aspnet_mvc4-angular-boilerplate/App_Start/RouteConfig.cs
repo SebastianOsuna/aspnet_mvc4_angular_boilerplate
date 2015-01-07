@@ -12,6 +12,7 @@ namespace aspnet_mvc4_angular_boilerplate
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("static/{file}.html");
 
             routes.MapRoute(
                 name: "root",
