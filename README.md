@@ -20,3 +20,17 @@ The front-end code is distributed along several directories.
 # Example code
 
 This boilerplate comes with a basic Angular application. The application uses [angular-translate](https://github.com/angular-translate/angular-translate) for i18n. The application also has some basic REST authentication functionality.
+
+# Troubleshooting
+
+I had some problems setup up the database with the original `connectionString`. For some reason, EntityFramework was having problems creating the database file. Using [this](http://msdn.microsoft.com/en-us/library/hh510202.aspx) link I created a new database with
+
+```
+"C:\Program Files\Microsoft SQL Server\120\Tools\Binn\SqlLocalDB.exe" create LocalDBapp1
+"C:\Program Files\Microsoft SQL Server\120\Tools\Binn\SqlLocalDB.exe" start LocalDBapp1
+```
+*The SqlLocalDB.exe location may vary*
+
+And the pointed the connection to this DB with no file.
+
+*You can change your database connection in `Web.config`*

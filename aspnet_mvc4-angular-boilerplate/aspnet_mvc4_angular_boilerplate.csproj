@@ -185,26 +185,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\SessionsController.cs" />
     <Compile Include="Controllers\StaticPagesController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TodoController.cs" />
-    <Compile Include="Controllers\TodoListController.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
-    <Compile Include="Filters\ValidateHttpAntiForgeryTokenAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\TodoItemDto.cs" />
-    <Compile Include="Models\TodoListDto.cs" />
-    <Compile Include="Models\TodoList.cs" />
-    <Compile Include="Models\TodoItem.cs" />
-    <Compile Include="Models\TodoItemContext.cs" />
+    <Compile Include="Models\ApplicationContext.cs" />
+    <Compile Include="Models\SessionDto.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\Sessions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="a.gitignore" />
     <Content Include="Content\vendor\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -212,6 +204,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\app\app.js" />
     <None Include="Views\StaticPages\Index.cshtml" />
+    <Content Include="static\main.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -224,6 +217,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Filters\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>

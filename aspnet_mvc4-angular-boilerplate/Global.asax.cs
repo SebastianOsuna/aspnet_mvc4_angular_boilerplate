@@ -23,6 +23,10 @@ namespace aspnet_mvc4_angular_boilerplate
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            // Remove this in Production
+            
+            //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<aspnet_mvc4_angular_boilerplate.Models.SessionsContext>());
         }
     }
 }

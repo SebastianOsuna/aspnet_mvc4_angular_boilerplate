@@ -1,2 +1,4 @@
 ﻿<h1>{{ 'welcome' | translate}}, {{ sessionsCtrl._current_user.username }}</h1>
+<button type="button" ng-click="sessionsCtrl.getSession()" >Get available session</button><br/>
+<p>Sessions: {{ sessionsCtrl.proxy.data }}</p>
 <a ng-click="sessionsCtrl.logout()" translate="logout"></a>
