@@ -1,5 +1,8 @@
 To Do List
 ===
 
+- Delete sessions on logout
+- Authentication filter
+- Authorization filter
 - Integrate bower for front-end dependencies
 - Pull front-end code from other repo
