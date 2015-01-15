@@ -5,12 +5,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using aspnet_mvc4_angular_boilerplate.Models;
+using aspnet_mvc4_angular_boilerplate.Filters;
 
-namespace aspnet_mvc4_angular_boilerplate.Controllers {
+namespace aspnet_mvc4_angular_boilerplate.Controllers { 
 
-    //private SessionsContext sessions = new SessionsContext();
-    
-    
     public class SessionsController : ApiController {
 
         private ApplicationContext db = new ApplicationContext();
@@ -50,6 +48,7 @@ namespace aspnet_mvc4_angular_boilerplate.Controllers {
                 new { errors = new string[] { "login.badCredentials" } }));
         }
 
+        [HandleAuthentication]
         public ICollection<SessionDto> GetAvailableSessions(string username)
         {
             IQueryable<User> user = db.Users.Include("Sessions").Where(u => u.Username == username);

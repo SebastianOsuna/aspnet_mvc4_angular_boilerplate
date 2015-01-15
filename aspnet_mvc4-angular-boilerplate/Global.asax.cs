@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using aspnet_mvc4_angular_boilerplate.Filters;
 
 namespace aspnet_mvc4_angular_boilerplate
 {
@@ -24,9 +25,9 @@ namespace aspnet_mvc4_angular_boilerplate
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            // Remove this in Production
-            
-            //System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<aspnet_mvc4_angular_boilerplate.Models.SessionsContext>());
+
+
         }
+
     }
 }
