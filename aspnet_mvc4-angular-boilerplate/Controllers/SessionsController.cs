@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using aspnet_mvc4_angular_boilerplate.Models;
 using aspnet_mvc4_angular_boilerplate.Filters;
+using aspnet_mvc4_angular_boilerplate.Utils;
 
 namespace aspnet_mvc4_angular_boilerplate.Controllers { 
 
@@ -16,21 +17,23 @@ namespace aspnet_mvc4_angular_boilerplate.Controllers {
         [AllowAnonymous]
         public object PostLogin(LoginModel user) {
             if (ModelState.IsValid) {
-                // TODO: BCrypt password
-                IEnumerable<User> result = db.Users.Where(u => u.Username == user.Username && u.PasswordDigest == user.Password)
-                    .AsEnumerable();
+                IEnumerable<User> result = db.Users.Where(u => u.Username == user.Username).AsEnumerable();
                 if (result.Count() == 1) {
                     User use = result.First();
-                    Session newSession = new Session()
+                    if(BCrypt.CheckPassword(user.Password, use.PasswordDigest) )
                     {
-                        User = use,
-                        AccessToken = use.Username
-                    };
+                        Session newSession = new Session()
+                        {
+                            User = use,
+                            AccessToken = use.Username
+                        };
                     
-                    result.First().Sessions.Add(newSession);
-                    db.Sessions.Add(newSession);
-                    db.SaveChanges();
-                    return new { token = newSession.AccessToken, expirationDate = newSession.ExpirationDate };
+                        result.First().Sessions.Add(newSession);
+                        db.Sessions.Add(newSession);
+                        db.SaveChanges();
+                        return new { token = newSession.AccessToken, expirationDate = newSession.ExpirationDate };
+                    }
+                    
                 } else {
 
                     User newUser = new User() {

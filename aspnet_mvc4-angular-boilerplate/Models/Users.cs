@@ -4,10 +4,15 @@ using System.Data.Entity;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using aspnet_mvc4_angular_boilerplate.Utils;
 
 namespace aspnet_mvc4_angular_boilerplate.Models {
 
     public class User {
+
+        public static string _SALT = "&^77/";
+
+        private string _passwordDigest;
 
         public User()
         {
@@ -18,7 +23,17 @@ namespace aspnet_mvc4_angular_boilerplate.Models {
         public long UserId { get; set; }
 
         [Required]
-        public string Username { get; set; }
+        public string Username
+        {
+            get
+            {
+                return _passwordDigest;
+            }
+            set
+            {
+                this._passwordDigest = BCrypt.HashPassword(value, _SALT);
+            }
+        }
 
         [Required]
         public string PasswordDigest { get; set; }
