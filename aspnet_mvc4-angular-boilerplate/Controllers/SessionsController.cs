@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Web.Http;
 using aspnet_mvc4_angular_boilerplate.Models;
 using aspnet_mvc4_angular_boilerplate.Filters;
-using aspnet_mvc4_angular_boilerplate.Utils;
 
 namespace aspnet_mvc4_angular_boilerplate.Controllers { 
 
@@ -20,7 +19,8 @@ namespace aspnet_mvc4_angular_boilerplate.Controllers {
                 IEnumerable<User> result = db.Users.Where(u => u.Username == user.Username).AsEnumerable();
                 if (result.Count() == 1) {
                     User use = result.First();
-                    if(BCrypt.CheckPassword(user.Password, use.PasswordDigest) )
+                    bool auth = BCrypt.Net.BCrypt.Verify(user.Password, use.PasswordDigest);
+                    if( auth )
                     {
                         Session newSession = new Session()
                         {
@@ -37,9 +37,9 @@ namespace aspnet_mvc4_angular_boilerplate.Controllers {
                 } else {
 
                     User newUser = new User() {
-                        Username = user.Username,
-                        PasswordDigest = user.Password
+                        Username = user.Username
                     };
+                    newUser.SetPassword(user.Password);
                     db.Users.Add(newUser);
                     db.SaveChanges();
                 }
@@ -49,6 +49,15 @@ namespace aspnet_mvc4_angular_boilerplate.Controllers {
             // If we got this far, something failed
             throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.Unauthorized, 
                 new { errors = new string[] { "login.badCredentials" } }));
+        }
+
+        public void DeleteLogout(string token)
+        {
+            IEnumerable<Session> sessions = db.Sessions.Where(s => s.AccessToken == token).AsEnumerable();
+            foreach(Session s in sessions) {
+                db.Sessions.Remove(s);
+            }
+            db.SaveChanges();
         }
 
         [HandleAuthentication]

@@ -56,7 +56,17 @@
         };
 
         self.logout = function () {
-            self._current_user = null;
+            var req = {
+                method: 'DELETE',
+                url: 'api/sessions?token=' + self._current_user.token,
+                headers: {
+                    'Authentication': self._current_user.token
+                }
+            };
+            $http(req)
+                .then(function () {
+                    self._current_user = null;
+                });
         };
 
         self.authenticated = function () {

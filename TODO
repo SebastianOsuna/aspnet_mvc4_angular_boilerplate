@@ -1,8 +1,10 @@
 To Do List
 ===
 
-- Delete sessions on logout
-- Authentication filter
+- Authentication filter: Expose current user
+- On logout, validate the requesting user vs the session owner.
 - Authorization filter
+- Check sessions expiration date (delete session if expired)
+- Update sessions expiration date
 - Integrate bower for front-end dependencies
 - Pull front-end code from other repo
